@@ -20,11 +20,11 @@ public BinaryTreeNode<K> addRecursively(BinaryTreeNode<K> current, K key)
     {
         return current;
     }
-    if(result == -1)
+    if(result < 0)
     {
         current.left =addRecursively(current.left, key);
     }
-    else if (result == 1)
+    else if (result > 0)
     {
         current.right = addRecursively(current.left,key);
     }
@@ -32,11 +32,20 @@ public BinaryTreeNode<K> addRecursively(BinaryTreeNode<K> current, K key)
 }
     public int getSizeRecursively(BinaryTreeNode<K> current)
     {
-        return current == null ? 0 : 1 + this.getSizeRecursively(current.left)+
+        return current == null ? 0 : 1 + this.getSizeRecursively(current.left) +
                 this.getSizeRecursively(current.right);
     }
     public int getSize()
     {
         return this.getSizeRecursively(root);
+    }
+    public K nodeSearch(BinaryTreeNode<K> current, K key){
+    if (current == null || current.key == key)
+    return key;
+    int result = key.compareTo(current.key);
+    if (result < 0)
+        return nodeSearch(current.left, key);
+    else
+        return nodeSearch(current.right, key);
     }
 }
