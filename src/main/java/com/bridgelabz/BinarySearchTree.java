@@ -39,7 +39,8 @@ public BinaryTreeNode<K> addRecursively(BinaryTreeNode<K> current, K key)
     {
         return this.getSizeRecursively(root);
     }
-    public K nodeSearch(BinaryTreeNode<K> current, K key){
+    public K nodeSearch(BinaryTreeNode<K> current, K key)
+    {
     if (current == null || current.key == key)
     return key;
     int result = key.compareTo(current.key);
